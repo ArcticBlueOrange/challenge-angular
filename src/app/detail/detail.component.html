@@ -1,0 +1,46 @@
+<div
+  class="show-card"
+  *ngIf="show"
+  >
+
+  <h2
+    class="show-title"
+    >{{show.name}}
+  </h2>
+
+  <div class="show-img-desc">
+    <!-- <img [src]="show.image.original" -->
+    <img [src]="show.image.medium"
+      class="show-img"
+      >
+
+    <div
+      class="show-desc"
+      >
+      <ng-component [innerHTML]="show.summary"></ng-component>
+
+      <p> Genres </p>
+      <div
+        class="show-genres" >
+        <div *ngFor="let genre of show.genres"
+          class="show-genre" >
+          {{genre}}
+        </div>
+      </div>
+
+      <div> Average Rating: <strong>{{show.rating?.average}}</strong> </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+
+
+<pre>
+  {{show | json}}
+</pre>

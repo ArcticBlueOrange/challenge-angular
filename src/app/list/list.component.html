@@ -1,11 +1,20 @@
 <div>
     <h1>TV SHOWS</h1>
-    <input type="text" placeholder="search by name">
+    <input
+      type="text"
+      placeholder="search by name"
+      [(ngModel)]="text"
+    (input)="search()"
+    >
 </div>
 
 <div class="container">
-    <div *ngFor="let show of data" class="show">
+    <div
+      *ngFor="let show of data"
+      class="show"
+      [routerLink]="'/detail/' + show.id"
+    >
         <p>{{ show.name }}</p>
-        <img src={{show.image.medium}} />
+        <img *ngIf="show.image" src={{show.image.medium}} />
     </div>
 </div>
