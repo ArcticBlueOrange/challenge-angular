@@ -9,14 +9,6 @@
 </div>
 
 <div class="container">
-    <div
-      *ngFor="let show of data"
-      class="show"
-      [routerLink]="'/detail/' + show.id"
-      >
-        <p>{{ show.name }}</p>
-        <img *ngIf="show.image" src={{show.image.medium}} />
-      <div class="item-desc">{{show.summary | detag | ellipsis: 25}}</div>
-    </div>
+  <app-show-card *ngFor="let show of data" [show]="show"></app-show-card>
 </div>
 

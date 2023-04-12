@@ -13,6 +13,7 @@ export class UserDataService {
     if (ud) {
       this.userProfile = JSON.parse(ud);
     }
+    this.setTheme();
   }
 
   get profile() {
@@ -33,6 +34,23 @@ export class UserDataService {
   update(newData: any) {
     this.userProfile = newData;
     localStorage.setItem('userdata', JSON.stringify(newData));
+    this.setTheme();
+  }
+
+  setTheme() {
+    const body = document.querySelector('body');
+    const t = this.theme;
+    if (body) {
+      if (t == 'dark') {
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+        console.log("dark theme");
+      } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        console.log("light theme");
+      }
+    }
   }
 
 }

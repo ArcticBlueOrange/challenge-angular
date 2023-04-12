@@ -29,15 +29,39 @@ export class ListComponent implements OnInit {
       .pipe(debounceTime(400))
       .subscribe((text: string) =>
         this.getData(text).subscribe(
-          (res) => this.data = res.map(r => r.show))
+          (res) => {
+            const r = res.map(r => r.show)
+            this.data = r
+            this.cacheValues(r)
+          })
       );
   }
 
   private getData(searchKey: string = 'naruto') {
-    return this._http.get<Response[]>(`https://api.tvmaze.com/search/shows?q=${searchKey}`)
+    let res = this._http.get<Response[]>(`https://api.tvmaze.com/search/shows?q=${searchKey}`)
+    return res;
   }
 
   search() {
     this.subject.next(this.text);
   }
+
+  private cacheValues(newShows: TvShow[]) {
+    // store values to localstorage
+    const lc = localStorage.getItem('shows-cache');
+    let oldShows = [];
+    if (lc) {
+      oldShows = JSON.parse(lc);
+    }
+    const shows = [...newShows, ...oldShows.filter(
+      (os: TvShow) => newShows.find(ns => ns.id == os.id) == undefined
+    )];
+
+    localStorage.setItem(
+      'shows-cache',
+      JSON.stringify(shows)
+    );
+
+  }
+
 }

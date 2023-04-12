@@ -1,14 +1,12 @@
 
 <h2>
-  {{userProfile.mail || 'User'}} Settings
+  {{user.mail || 'User'}} Settings
 </h2>
-
-
 
 <form
   [formGroup]="userForm"
   (ngSubmit)="onSubmit()"
-  class="grid-container"
+  class="grid-container theme"
   >
 
   <label for="email">E-Mail</label>
@@ -38,6 +36,6 @@
 
 </form>
 
-<pre>{{ userForm.value | json }}</pre>
-<pre>{{ user.profile | json }}</pre>
 
+<!-- <pre>User Form: {{ userForm.value | json }}</pre>
+<pre>User Profile: {{ user.profile | json }}</pre> -->

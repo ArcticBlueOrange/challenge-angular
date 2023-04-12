@@ -17,7 +17,9 @@ export class ProfileComponent {
 
   userProfile: UserProfile = { mail: '', theme: 'light' }
 
-  constructor(private fb: FormBuilder, public user: UserDataService) {
+  constructor(
+    private fb: FormBuilder,
+    public user: UserDataService) {
     this.userProfile = user.profile;
   }
 

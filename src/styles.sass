@@ -1,18 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
-$base-color: #c6538c
-$border-dark: rgba($base-color, 0.88)
-$dark-theme: true !default
-$primary-color: #f8bbd0 !default
-$accent-color: #6a1b9a !default
+// Global variables
+$primary-color: #007bff
+$secondary-color: #6c757d
 
-@if $dark-theme
-  $primary-color: darken($primary-color, 60%)
-  $accent-color: lighten($accent-color, 60%)
+// Dark theme vars
+$dark-background: #343a40
+$dark-text-color: #f8f9fa
+$primary-color-dark: #007bff
+$secondary-color-dark: #6c757d
+
+// Light theme vars
+$light-background: #f8f9fa
+$light-text-color: #343a40
+$primary-color-light: #007bff
+$secondary-color-light: #6c757d
+
+// Mixin to set theme styles
+@mixin theme($background-color, $text-color)
+  background-color: $background-color
+  color: $text-color
+
+.theme
+  body.light-theme &
+    @include theme($light-background, $light-text-color)
+  body.dark-theme &
+    @include theme($dark-background, $dark-text-color)
 
 body
-  background-color: $primary-color
   font-family: 'Roboto'
   font-size: 20px
   margin: 0em
   padding: 0em
 
+  &.dark-theme
+    @include theme($dark-background, $dark-text-color)
+
+  &.light-theme
+    @include theme($light-background, $light-text-color)
+
+::-webkit-scrollbar
+  width: 12px
+
+::-webkit-scrollbar-track
+  background: #ffffff00
+  &:hover
+    background: #ffffff56
+
+::-webkit-scrollbar-thumb
+  background-color: #ffffff00
+  border-radius: 20px
+  &:hover
+    background-color: #ffffff56

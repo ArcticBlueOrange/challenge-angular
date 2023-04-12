@@ -1,0 +1,21 @@
+.categories-list
+  // display: flex
+  // flex-direction: column
+  // flex-basis: auto
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+
+  .toggle
+    border: 5px solid #4d0000
+    border-radius: 10%
+    margin: 1%
+
+    input:not(:checked) + .desc
+      background-color: #4d0000
+
+    input:checked + .desc
+      background-color: #00a653
+
+    input
+      display: none

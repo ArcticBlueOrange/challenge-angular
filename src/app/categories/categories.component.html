@@ -1,0 +1,38 @@
+<h2> Browse by Categories </h2>
+
+<!-- TOGGLE ANY-ALL -->
+<div>
+  <label>
+    Check All Selected:
+    <input
+      [(ngModel)]="checkAll"
+      type="checkbox">
+  </label>
+</div>
+
+<!-- form WITH THE GENRES -->
+  <div
+    class="categories-list">
+    <div
+      class="toggle"
+      *ngFor="let category of categories; let i = index">
+      <label>
+        <input
+          (change) = "getUserSelect($event,i)"
+          type="checkbox" value="category">
+        <div
+          class="desc">
+          {{category}}
+        </div>
+      </label>
+    </div>
+  </div>
+
+
+<!-- LIST OF FILTERED MOVIES -->
+<div
+  *ngFor="let show of filterShows(checkAll)">
+  <app-show-card
+    [show]="show"></app-show-card>
+</div>
+

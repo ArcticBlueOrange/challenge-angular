@@ -3,7 +3,7 @@ export interface TvShow {
   genres: string[],
   image: {
     medium: string,
-    original?:string,
+    original?: string,
   },
   name: string,
   summary?: string,
@@ -16,4 +16,3 @@ export interface Response {
   score: number,
   show: TvShow,
 }
-

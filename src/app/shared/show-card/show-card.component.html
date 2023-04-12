@@ -1,0 +1,18 @@
+<div
+  #showCard
+  class="show"
+  [ngClass]="{'hovered': hovered}"
+  [id]="customId ? customId + '-' + show?.id : show?.id"
+  [routerLink]="'/detail/' + show?.id"
+  >
+    <p class="show-header">
+      {{ show?.name }}
+    </p>
+    <img
+      *ngIf="show?.image"
+      src={{show?.image?.medium}} />
+  <div *ngIf="hovered"
+    class="show-desc">
+    {{show?.summary | detag | ellipsis: 35}}
+  </div>
+</div>

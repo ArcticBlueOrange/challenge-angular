@@ -11,6 +11,8 @@ import { DetailComponent } from './detail/detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { DetagPipe } from './pipes/detag.pipe';
+import { CategoriesComponent } from './categories/categories.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,7 @@ import { DetagPipe } from './pipes/detag.pipe';
     NotFoundComponent,
     DetailComponent,
     ProfileComponent,
-    EllipsisPipe,
-    DetagPipe
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +29,7 @@ import { DetagPipe } from './pipes/detag.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [RootComponent]

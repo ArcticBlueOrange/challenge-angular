@@ -1,0 +1,33 @@
+.show
+  margin: .5em
+  width: 10em
+  height: 100%
+  display: flex
+  padding: 10px
+  flex-direction: column
+
+  &.hovered
+    border-radius: 5%
+    outline: 10px solid #14925b60
+    flex-shrink: 0
+    flex-grow: 0
+    flex: 1
+    transform: scale(1.2)
+    background-color: #00000040
+
+  // &:hover
+  //   outline: 10px solid #14925b60
+
+  img
+    max-width: clamp(150px, 90%, 100px)
+    height: auto
+    margin: auto
+    border-radius: 5%
+
+  .show-header
+    text-align: center
+    font-weight: bold
+
+  .show-desc
+    text-align: center
+    font-size: 75%

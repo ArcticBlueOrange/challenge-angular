@@ -2,7 +2,7 @@
 
 [/] Una Search Bar per ricercare le serie tv per titolo.
 [/] Una pagina per consultare il dettaglio di una serie tv.
-[ ] Una vista per consultare le serie tv raggruppate per genere.
+[/] Una vista per consultare le serie tv raggruppate per genere.
 [/] Cambio tema: gli utenti devono poter cambiare il tema dell'applicazione (chiaro/scuro).
 [/] Una pagina profilo dove l'utente possa specificare le proprie preferenze sul tema chiar/scuro e inserire la propria email.
 
@@ -10,24 +10,31 @@
 
 - 23-04-11
 
-1.  moved tvshow and response to app/models dir (for readability)
-2.  checked api endpoints for tvmaze
-3.  edited tvshow interface to add:
-    - summary
-    - image.original
-4.  added Detail Component
-5.  edited html to add <base href="/"> (didn't know this)
-6.  added search funct. to the list page
+1.  Moved tvshow and response to app/models dir (for readability)
+2.  Checked api endpoints for tvmaze
+3.  Edited tvshow interface to add:
+    - Summary
+    - Image.original
+4.  Added Detail Component
+5.  Edited html to add <base href="/"> (didn't know this)
+6.  Added search funct. to the list page
 
 - 23-04-12
 
-7.  added profile component w/ form
-8.  moved form logic to userData service (user data is stored in localStorage)
-9.  added pipes to improve formatting in list
+7.  Added profile component w/ form
+8.  Moved form logic to userData service (user data is stored in localStorage)
+9.  Added pipes to improve formatting in list (ellipsis and remove html tags)
+10. Function in user-data service to handle theming
+11. New page for browsing categories
+12. shared module for handling movie cards/else
+13. css handling for the card hovering (/1)
+14. saving to localStorage the previously seen films
+15. categories-component
+16. forms for filtering cats
 
 # NOTES
 
-API Endpoints:
+Used API Endpoints:
 
 - Show search:
   - https://api.tvmaze.com/search/shows?q=<query/>
