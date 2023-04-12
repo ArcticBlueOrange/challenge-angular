@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TvShow } from '../models/tvshows';
 import { HttpClient } from '@angular/common/http';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-detail',
@@ -12,7 +13,10 @@ export class DetailComponent {
 
   show?: TvShow;
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient,
+    public user: UserDataService) {
     console.log(activatedRoute);
   }
 

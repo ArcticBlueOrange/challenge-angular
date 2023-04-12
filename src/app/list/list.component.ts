@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TvShow, Response } from '../models/tvshows';
 import { Subject, of } from 'rxjs'
 import { delay, debounceTime } from 'rxjs/operators'
+import { UserDataService } from '../services/user-data.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { delay, debounceTime } from 'rxjs/operators'
 })
 export class ListComponent implements OnInit {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, public user: UserDataService) {
+  }
 
   data: TvShow[] = [];
   text: string = '';
@@ -32,7 +34,6 @@ export class ListComponent implements OnInit {
   }
 
   private getData(searchKey: string = 'naruto') {
-    // console.log(this.text);
     return this._http.get<Response[]>(`https://api.tvmaze.com/search/shows?q=${searchKey}`)
   }
 

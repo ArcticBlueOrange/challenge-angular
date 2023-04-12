@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DetailComponent } from './detail/detail.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'shows', component: ListComponent },
-  { path: 'profile', component: NotFoundComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'detail/:id', component: DetailComponent },
   { path: 'detail', redirectTo: '' },
   { path: '', redirectTo: '/shows', pathMatch: 'prefix' },

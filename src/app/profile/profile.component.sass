@@ -1,0 +1,21 @@
+
+h2
+  margin-bottom: 3%
+  text-align: center
+
+.grid-container
+  display: grid
+  grid-template-columns: 200px 1fr
+  grid-gap: 16px
+  width: 50%
+  outline: 1px solid teal
+  margin: auto
+
+  label
+    grid-column: 1/2
+
+  select,input
+    grid-column: 2/3
+
+  .submit
+    grid-column: 1/3

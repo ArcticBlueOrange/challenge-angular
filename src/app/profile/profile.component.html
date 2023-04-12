@@ -1,0 +1,43 @@
+
+<h2>
+  {{userProfile.mail || 'User'}} Settings
+</h2>
+
+
+
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  class="grid-container"
+  >
+
+  <label for="email">E-Mail</label>
+  <input
+    type="email"
+    formControlName="mail"
+    placeholder="E-Mail"
+    >
+
+  <label for="theme">Theme</label>
+  <select
+    formControlName="theme"
+    name="Theme"
+    >
+    <option
+      value="light"
+      >Light</option>
+    <option
+      value="dark"
+      >Dark</option>
+  </select>
+
+  <br>
+
+  <input type="submit" class="submit">
+
+
+</form>
+
+<pre>{{ userForm.value | json }}</pre>
+<pre>{{ user.profile | json }}</pre>
+
