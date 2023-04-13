@@ -9,15 +9,21 @@
   class="grid-container theme"
   >
 
-  <label for="email">E-Mail</label>
+  <label
+    class="form-label"
+    for="email">E-Mail</label>
   <input
     type="email"
     formControlName="mail"
     placeholder="E-Mail"
+    class="form-control form-control-lg"
     >
 
-  <label for="theme">Theme</label>
+  <label
+    for="theme"
+    class="form-label">Theme</label>
   <select
+    class="form-select"
     formControlName="theme"
     name="Theme"
     >
@@ -31,11 +37,6 @@
 
   <br>
 
-  <input type="submit" class="submit">
-
+  <input type="submit" class="submit btn btn-primary" value="Save Settings">
 
 </form>
-
-
-<!-- <pre>User Form: {{ userForm.value | json }}</pre>
-<pre>User Profile: {{ user.profile | json }}</pre> -->

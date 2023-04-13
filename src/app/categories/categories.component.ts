@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { TvShow } from '../models/tvshows';
 import { UserDataService } from '../services/user-data.service';
 import { ShowApiService } from '../services/show-api.service';
-import { delay, fromEvent, map } from 'rxjs';
+import { delay, fromEvent, map, of, repeat, timeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-genres',
@@ -25,8 +25,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.showMoreButton) {
-      console.log("More button found")
-
+      // console.log("More button found")
       // NOT 100% sure how it works
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -67,6 +66,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   }
 
   filterShows(all: boolean = true): TvShow[] {
+    // console.log(this.checkAll)
     if (this.selectedGenres.length == 0) {
       return this.shows;
     }

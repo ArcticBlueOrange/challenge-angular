@@ -1,0 +1,13 @@
+<!-- TOGGLE ANY-ALL -->
+<div class="toggle-container">
+  <label class="switch">
+    <input
+      (click)="changeSelection()"
+      type="checkbox">
+    <span class="slider"></span>
+  </label>
+  <span
+    class="desc">
+    {{checkedVar ? textOn :textOff}}
+  </span>
+</div>

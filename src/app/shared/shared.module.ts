@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { DetagPipe } from '../pipes/detag.pipe';
 import { MenubarComponent } from './menubar/menubar.component';
+import { ToggleComponent } from './toggle/toggle.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,14 +15,17 @@ import { MenubarComponent } from './menubar/menubar.component';
     EllipsisPipe,
     ShowCardComponent,
     MenubarComponent,
+    ToggleComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
   ],
   exports: [
     ShowCardComponent,
     MenubarComponent,
+    ToggleComponent,
     DetagPipe,
   ]
 })

@@ -40,6 +40,10 @@
 20. moved show-api interact to own service
 21. more-button (responding to visibility)
 
+- 23-04-14
+
+22. fontawesome icons / bootstrap classes
+
 # NOTES
 
 Used API Endpoints:

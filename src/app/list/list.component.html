@@ -1,14 +1,18 @@
 <div>
-    <h1>TV SHOWS</h1>
-    <input
-      type="text"
-      placeholder="search by name"
-      [(ngModel)]="text"
+  <h1>TV SHOWS</h1>
+  <input
+    type="text"
+    class="search-bar"
+    placeholder="Search"
+    [(ngModel)]="text"
     (input)="search()"
-    >
+  >
 </div>
 
-<div class="container">
-  <app-show-card *ngFor="let show of data" [show]="show"></app-show-card>
+<div
+  class="container">
+  <app-show-card
+    *ngFor="let show of data"
+    [show]="show"></app-show-card>
 </div>
 

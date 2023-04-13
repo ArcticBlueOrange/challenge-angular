@@ -1,18 +1,9 @@
 <h2> Browse by Categories </h2>
 
-<!-- TOGGLE ANY-ALL -->
-<div class="toggle-container">
-  <label class="switch">
-    <input
-      [(ngModel)]="checkAll"
-      type="checkbox">
-    <span class="slider"></span>
-  </label>
-  <span
-    class="desc">
-    {{checkAll ? 'ALL' : 'ANY'}}
-  </span>
-</div>
+<app-toggle
+  [(checkedVar)]="checkAll"
+  [textOn]="'ALL'"
+  [textOff]="'ANY'"></app-toggle>
 
 <!-- form WITH THE GENRES -->
   <div

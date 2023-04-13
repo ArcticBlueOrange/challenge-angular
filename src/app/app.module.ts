@@ -9,8 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DetailComponent } from './detail/detail.component';
 import { ProfileComponent } from './profile/profile.component';
-import { EllipsisPipe } from './pipes/ellipsis.pipe';
-import { DetagPipe } from './pipes/detag.pipe';
 import { CategoriesComponent } from './categories/categories.component';
 import { SharedModule } from './shared/shared.module';
 
