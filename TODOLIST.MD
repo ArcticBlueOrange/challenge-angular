@@ -32,6 +32,14 @@
 15. categories-component
 16. forms for filtering cats
 
+- 23-04-13
+
+17. any-all filter in cats
+18. animations for the showcard (netflix-style)
+19. menu navbar
+20. moved show-api interact to own service
+21. more-button (responding to visibility)
+
 # NOTES
 
 Used API Endpoints:

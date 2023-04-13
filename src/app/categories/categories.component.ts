@@ -1,31 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TvShow } from '../models/tvshows';
 import { UserDataService } from '../services/user-data.service';
+import { ShowApiService } from '../services/show-api.service';
+import { delay, fromEvent, map } from 'rxjs';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'app-genres',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.sass']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, AfterViewInit {
 
   shows: TvShow[] = [];
-  categories: string[] = [];
-  selectedCategories: string[] = [];
+  genres: string[] = [];
+  selectedGenres: string[] = [];
   checkAll: boolean = true;
+  maxShown: number = 10;
+  increment: number = 10;
+  @ViewChild("showMoreButton") showMoreButton?: ElementRef;
 
-  constructor(private user: UserDataService) { }
+  constructor(
+    private user: UserDataService,
+    public showsApi: ShowApiService) { }
+
+  ngAfterViewInit(): void {
+    if (this.showMoreButton) {
+      console.log("More button found")
+
+      // NOT 100% sure how it works
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // element is in view
+            // observer.unobserve(entry.target);
+            // emit an event
+            const event = new Event('elementInView');
+            entry.target.dispatchEvent(event);
+          }
+        });
+      });
+      observer.observe(this.showMoreButton.nativeElement);
+
+      fromEvent(this.showMoreButton.nativeElement, "elementInView")
+        .pipe(
+          delay(1000)
+        )
+        .subscribe(() => {
+          // console.log("More visibility triggered")
+          this.showMore()
+        }
+        );
+    }
+  }
 
   ngOnInit(): void {
     // get cached shows
-    const cached = localStorage.getItem('shows-cache');
-    if (cached) {
-      // console.log(cached)
-      this.shows = JSON.parse(cached)
-    }
-
-    // extract categories
-    this.categories = this.shows
+    this.showsApi.getCached().subscribe(
+      (res) => { this.shows = res; }
+    )
+    // extract genres
+    this.genres = this.shows
       .map(s => s.genres)
       .flat()
       .filter((e, i, a) => a.indexOf(e) == i)
@@ -33,38 +67,39 @@ export class CategoriesComponent implements OnInit {
   }
 
   filterShows(all: boolean = true): TvShow[] {
-    // shows movies that encompass all categories selected
-    // return this.shows.filter((s) => s.genres.indexOf(category) > -1);
-    if (this.selectedCategories.length == 0)
+    if (this.selectedGenres.length == 0) {
       return this.shows;
+    }
     if (all) {
-      console.log("All Search")
       return this.shows.filter(
-        (s) => this.selectedCategories.every(g => s.genres.includes(g))
-      )
+        (s) => this.selectedGenres.every(g => s.genres.includes(g)));
     }
     else {
-      console.log("Any Search")
       return this.shows.filter(
-        (s) => this.selectedCategories.some(g => s.genres.includes(g))
-      )
+        (s) => this.selectedGenres.some(g => s.genres.includes(g)));
     }
   }
 
   getUserSelect(e: Event, i: number): void {
     const isChecked: boolean = (e.target as HTMLInputElement).checked;
+    // RESET COUNTER
+    this.maxShown = 10;
     if (isChecked) {
-      this.selectedCategories = [
-        ...this.selectedCategories, this.categories[i]];
+      this.selectedGenres = [
+        ...this.selectedGenres, this.genres[i]];
     }
     else {
-      const l = this.selectedCategories.length;
-      const s = this.categories[i];
-      const idx = this.selectedCategories.indexOf(s);
-      this.selectedCategories = [
-        ...this.selectedCategories.slice(0, idx),
-        ...this.selectedCategories.slice(idx + 1, l)];
+      const l = this.selectedGenres.length;
+      const s = this.genres[i];
+      const idx = this.selectedGenres.indexOf(s);
+      this.selectedGenres = [
+        ...this.selectedGenres.slice(0, idx),
+        ...this.selectedGenres.slice(idx + 1, l)];
     }
+  }
+
+  showMore() {
+    this.maxShown += this.increment;
   }
 
 }

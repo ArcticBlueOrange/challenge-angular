@@ -1,33 +1,40 @@
 .show
   margin: .5em
   width: 10em
-  height: 100%
+  // height: clamp(300px, 100%, 1%)
   display: flex
   padding: 10px
   flex-direction: column
+  transition: linear transform .4s
 
   &.hovered
     border-radius: 5%
-    outline: 10px solid #14925b60
+    // outline: 2px solid #14925b60
     flex-shrink: 0
     flex-grow: 0
     flex: 1
     transform: scale(1.2)
     background-color: #00000040
+    transition: cubic-bezier(.86,0,.07,1) transform 1s
 
-  // &:hover
-  //   outline: 10px solid #14925b60
-
-  img
-    max-width: clamp(150px, 90%, 100px)
-    height: auto
-    margin: auto
-    border-radius: 5%
+    img
+      outline: 1px solid #ff0000ce
 
   .show-header
     text-align: center
     font-weight: bold
+    font-size: .8vw
+    height: 2em
 
   .show-desc
     text-align: center
     font-size: 75%
+
+  img
+    position: relative
+    margin: auto
+    width: 100%
+    max-width: clamp(150px, 90%, 100px)
+    object-fit: cover
+    border-radius: 5%
+    transition: cubic-bezier(.86,0,.07,1) .4s

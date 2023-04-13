@@ -5,13 +5,16 @@
   [id]="customId ? customId + '-' + show?.id : show?.id"
   [routerLink]="'/detail/' + show?.id"
   >
-    <p class="show-header">
-      {{ show?.name }}
-    </p>
-    <img
-      *ngIf="show?.image"
-      src={{show?.image?.medium}} />
-  <div *ngIf="hovered"
+  <p class="show-header">
+    {{ show?.name }}
+  </p>
+  <img
+    *ngIf="show?.image"
+    src={{show?.image?.medium}} />
+  <div
+    *ngIf="!show?.image"
+    class="blank-image">IMG NOT FOUND</div>
+  <div *ngIf="true"
     class="show-desc">
     {{show?.summary | detag | ellipsis: 35}}
   </div>

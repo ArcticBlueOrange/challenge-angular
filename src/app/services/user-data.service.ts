@@ -44,11 +44,11 @@ export class UserDataService {
       if (t == 'dark') {
         body.classList.remove('light-theme');
         body.classList.add('dark-theme');
-        console.log("dark theme");
+        // console.log("dark theme");
       } else {
         body.classList.add('light-theme');
         body.classList.remove('dark-theme');
-        console.log("light theme");
+        // console.log("light theme");
       }
     }
   }

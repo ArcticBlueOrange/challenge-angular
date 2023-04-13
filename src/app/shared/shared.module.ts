@@ -4,6 +4,7 @@ import { ShowCardComponent } from './show-card/show-card.component';
 import { RouterModule } from '@angular/router';
 import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { DetagPipe } from '../pipes/detag.pipe';
+import { MenubarComponent } from './menubar/menubar.component';
 
 
 @NgModule({
@@ -11,13 +12,16 @@ import { DetagPipe } from '../pipes/detag.pipe';
     DetagPipe,
     EllipsisPipe,
     ShowCardComponent,
+    MenubarComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
   ],
   exports: [
-    ShowCardComponent
+    ShowCardComponent,
+    MenubarComponent,
+    DetagPipe,
   ]
 })
 export class SharedModule { }

@@ -1,28 +1,32 @@
 <h2> Browse by Categories </h2>
 
 <!-- TOGGLE ANY-ALL -->
-<div>
-  <label>
-    Check All Selected:
+<div class="toggle-container">
+  <label class="switch">
     <input
       [(ngModel)]="checkAll"
       type="checkbox">
+    <span class="slider"></span>
   </label>
+  <span
+    class="desc">
+    {{checkAll ? 'ALL' : 'ANY'}}
+  </span>
 </div>
 
 <!-- form WITH THE GENRES -->
   <div
     class="categories-list">
     <div
-      class="toggle"
-      *ngFor="let category of categories; let i = index">
+      class="toggle-button"
+      *ngFor="let genre of genres; let i = index">
       <label>
         <input
           (change) = "getUserSelect($event,i)"
           type="checkbox" value="category">
         <div
           class="desc">
-          {{category}}
+          {{genre}}
         </div>
       </label>
     </div>
@@ -31,8 +35,17 @@
 
 <!-- LIST OF FILTERED MOVIES -->
 <div
-  *ngFor="let show of filterShows(checkAll)">
+  class="show-list">
   <app-show-card
+    *ngFor="let show of filterShows(checkAll).slice(0,maxShown)"
     [show]="show"></app-show-card>
+  <div *ngIf="filterShows(checkAll).length == 0">No Shows Found :(</div>
 </div>
 
+
+<!-- INCREMENT BUTTON -->
+<button
+  #showMoreButton
+  *ngIf="filterShows(checkAll).length > maxShown"
+  (click)="showMore()"
+  >SHOW MORE</button>
