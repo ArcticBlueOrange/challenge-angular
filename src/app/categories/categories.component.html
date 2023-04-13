@@ -16,7 +16,7 @@
           (change) = "getUserSelect($event,i)"
           type="checkbox" value="category">
         <div
-          class="desc">
+          class="btn btn-primary desc">
           {{genre}}
         </div>
       </label>
@@ -37,6 +37,7 @@
 <!-- INCREMENT BUTTON -->
 <button
   #showMoreButton
+  class="btn btn-outline-primary more-button"
   *ngIf="filterShows(checkAll).length > maxShown"
   (click)="showMore()"
   >SHOW MORE</button>

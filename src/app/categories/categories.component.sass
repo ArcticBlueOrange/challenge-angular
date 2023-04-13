@@ -4,9 +4,6 @@
   flex-wrap: wrap
 
 .categories-list
-  // display: flex
-  // flex-direction: column
-  // flex-basis: auto
   display: flex
   flex-direction: row
   flex-wrap: wrap
@@ -15,22 +12,14 @@
     margin: 1%
 
     input + .desc
-      box-shadow: 5px 5px 5px 5px #2a2a2a60
-      border: 5px solid #4d0000
-      border-radius: 30%
-      background-color: #4d0000
       transition: linear .2s
 
-      &:before
-        box-shadow: -5px -5px #2a2a2a60
-
-    input:not(:checked) + .desc
-      background-color: #4d0000
-
     input:checked + .desc
-      background-color: #00a653
-      border: 5px solid #00a653
+      background-color: #1cbaa2
 
     input
       display: none
       position: absolute
+
+.more-button
+  width: 100%

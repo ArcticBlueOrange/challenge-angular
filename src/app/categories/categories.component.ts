@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { TvShow } from '../models/tvshows';
 import { UserDataService } from '../services/user-data.service';
 import { ShowApiService } from '../services/show-api.service';
-import { delay, fromEvent, map, of, repeat, timeInterval } from 'rxjs';
+import { delay, fromEvent, map, of, repeat, tap, timeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-genres',
@@ -42,9 +42,11 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
 
       fromEvent(this.showMoreButton.nativeElement, "elementInView")
         .pipe(
-          delay(1000)
-        )
-        .subscribe(() => {
+          delay(500),
+          tap(() => { if (this.showMoreButton) this.showMoreButton.nativeElement.innerHTML = '...' }),
+          delay(1000),
+          tap(() => { if (this.showMoreButton) this.showMoreButton.nativeElement.innerHTML = 'SHOW MORE' }),
+        ).subscribe(() => {
           // console.log("More visibility triggered")
           this.showMore()
         }
