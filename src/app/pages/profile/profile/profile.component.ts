@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup } from '@angular/forms';
 import { UserProfile } from '../../../models/profile';
 import { UserDataService } from '../../../services/user-data.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -19,8 +20,10 @@ export class ProfileComponent {
 
   constructor(
     private fb: FormBuilder,
-    public user: UserDataService) {
+    public user: UserDataService,
+    private title: Title) {
     this.userProfile = user.profile;
+    this.title.setTitle("User Settings")
   }
 
   onSubmit() {

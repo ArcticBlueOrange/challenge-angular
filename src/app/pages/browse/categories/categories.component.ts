@@ -3,6 +3,7 @@ import { TvShow } from '../../../models/tvshows';
 import { UserDataService } from '../../../services/user-data.service';
 import { ShowApiService } from '../../../services/show-api.service';
 import { delay, fromEvent, map, of, repeat, tap, timeInterval } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-genres',
@@ -21,7 +22,8 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
 
   constructor(
     private user: UserDataService,
-    public showsApi: ShowApiService) { }
+    public showsApi: ShowApiService,
+    private title: Title) { }
 
   ngAfterViewInit(): void {
     if (this.showMoreButton) {
@@ -63,6 +65,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
       .flat()
       .filter((e, i, a) => a.indexOf(e) == i)
       .sort();
+    this.title.setTitle("Browse");
   }
 
   filterShows(all: boolean = true): TvShow[] {

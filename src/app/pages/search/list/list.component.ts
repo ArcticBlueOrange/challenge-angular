@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TvShow, Response } from '../../../models/tvshows';
 import { Subject, of } from 'rxjs'
-import { delay, debounceTime } from 'rxjs/operators'
+import { delay, debounceTime, tap } from 'rxjs/operators'
 import { UserDataService } from '../../../services/user-data.service';
 import { ShowApiService } from '../../../services/show-api.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,17 +21,20 @@ export class ListComponent implements OnInit {
 
   constructor(
     public user: UserDataService,
-    public shows: ShowApiService) { }
+    public shows: ShowApiService,
+    private title: Title) { }
 
 
   ngOnInit(): void {
     this.shows.getShowsByKey().subscribe((res) => {
-      this.data = res.map(r => r.show)
+      this.data = res.map(r => r.show);
     })
 
     this.subject
-      .pipe(debounceTime(400))
-      .subscribe((text: string) =>
+      .pipe(
+        debounceTime(400),
+        tap((sk) => this.title.setTitle(`...${sk}...`))
+      ).subscribe((text: string) =>
         this.shows.getShowsByKey(text).subscribe(
           (res) => {
             const r = res.map(r => r.show)
@@ -38,6 +42,7 @@ export class ListComponent implements OnInit {
             this.shows.cacheValues(r);
           })
       );
+    this.title.setTitle("NeetFLUX - search")
   }
 
   search() {
