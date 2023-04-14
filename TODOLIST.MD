@@ -1,10 +1,10 @@
 # TODO
 
-[/] Una Search Bar per ricercare le serie tv per titolo.
-[/] Una pagina per consultare il dettaglio di una serie tv.
-[/] Una vista per consultare le serie tv raggruppate per genere.
+[X] Una Search Bar per ricercare le serie tv per titolo.
+[X] Una pagina per consultare il dettaglio di una serie tv.
+[X] Una vista per consultare le serie tv raggruppate per genere.
 [/] Cambio tema: gli utenti devono poter cambiare il tema dell'applicazione (chiaro/scuro).
-[/] Una pagina profilo dove l'utente possa specificare le proprie preferenze sul tema chiar/scuro e inserire la propria email.
+[X] Una pagina profilo dove l'utente possa specificare le proprie preferenze sul tema chiar/scuro e inserire la propria email.
 
 # DONE
 
@@ -43,6 +43,12 @@
 - 23-04-14
 
 22. fontawesome icons / bootstrap classes
+23. save last search to service (to keep when changing page) / local storage (when reloading app)
+24. moved detail to own module (TODO BUG: NOT RELOADING WHEN CLICKING ANY FROM SUGGESTIONS)
+25. ...moved browse to own module
+26. ...moved search to own module
+27. ...moved profile to own module
+28.
 
 # NOTES
 

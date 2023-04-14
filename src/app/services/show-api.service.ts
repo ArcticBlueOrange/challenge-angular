@@ -8,18 +8,23 @@ import { Observable, of } from 'rxjs';
 })
 export class ShowApiService {
 
+  lastSearch: string = '';
   lcShows: TvShow[] = [];
   fresh: boolean = false;
 
   constructor(private _http: HttpClient) {
+    this.lastSearch = localStorage.getItem('last-search') ?? 'dragon ball';
   }
 
   public getShowById(id: string): Observable<TvShow> {
     return this._http.get<TvShow>(`https://api.tvmaze.com/shows/${id}`)
   }
 
-  public getShowsByKey(searchKey: string = 'dragon ball') {
+  public getShowsByKey(searchKey: string = this.lastSearch) {
     let res = this._http.get<Response[]>(`https://api.tvmaze.com/search/shows?q=${searchKey}`)
+    this.lastSearch = searchKey;
+    localStorage.setItem('last-search', searchKey);
+
     return res;
   }
 

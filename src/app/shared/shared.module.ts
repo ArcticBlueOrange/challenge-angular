@@ -7,6 +7,7 @@ import { DetagPipe } from '../pipes/detag.pipe';
 import { MenubarComponent } from './menubar/menubar.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     ShowCardComponent,
     MenubarComponent,
     ToggleComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     MenubarComponent,
     ToggleComponent,
     DetagPipe,
+    NotFoundComponent,
   ]
 })
 export class SharedModule { }

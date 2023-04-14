@@ -37,6 +37,21 @@
 
     </div>
   </div>
+
+  <div class="suggested">
+    <h4>
+      SIMILAR SHOWS
+    </h4>
+
+  <div
+    class="show-list">
+    <app-show-card
+      *ngFor="let suggestion of similarShows"
+      [show]="suggestion"></app-show-card>
+    <div *ngIf="similarShows.length == 0">No Similar Shows Found</div>
+  </div>
+
+  </div>
 </div>
 
 <!--

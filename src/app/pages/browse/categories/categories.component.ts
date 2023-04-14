@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { TvShow } from '../models/tvshows';
-import { UserDataService } from '../services/user-data.service';
-import { ShowApiService } from '../services/show-api.service';
+import { TvShow } from '../../../models/tvshows';
+import { UserDataService } from '../../../services/user-data.service';
+import { ShowApiService } from '../../../services/show-api.service';
 import { delay, fromEvent, map, of, repeat, tap, timeInterval } from 'rxjs';
 
 @Component({
@@ -15,7 +15,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   genres: string[] = [];
   selectedGenres: string[] = [];
   checkAll: boolean = true;
-  maxShown: number = 10;
+  maxShown: number = 20;
   increment: number = 10;
   @ViewChild("showMoreButton") showMoreButton?: ElementRef;
 
@@ -31,8 +31,6 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // element is in view
-            // observer.unobserve(entry.target);
-            // emit an event
             const event = new Event('elementInView');
             entry.target.dispatchEvent(event);
           }
@@ -68,7 +66,6 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   }
 
   filterShows(all: boolean = true): TvShow[] {
-    // console.log(this.checkAll)
     if (this.selectedGenres.length == 0) {
       return this.shows;
     }
@@ -85,7 +82,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   getUserSelect(e: Event, i: number): void {
     const isChecked: boolean = (e.target as HTMLInputElement).checked;
     // RESET COUNTER
-    this.maxShown = 10;
+    this.maxShown = 20;
     if (isChecked) {
       this.selectedGenres = [
         ...this.selectedGenres, this.genres[i]];

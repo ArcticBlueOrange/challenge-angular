@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup } from '@angular/forms';
-import { UserProfile } from '../models/profile';
-import { UserDataService } from '../services/user-data.service';
+import { UserProfile } from '../../../models/profile';
+import { UserDataService } from '../../../services/user-data.service';
 
 @Component({
   selector: 'app-profile',
