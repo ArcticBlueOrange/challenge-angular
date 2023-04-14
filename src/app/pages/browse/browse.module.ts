@@ -15,8 +15,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     BrowseRoutingModule,
     SharedModule,
   ],
-  exports: [
-    CategoriesComponent,
-  ]
+  // exports: [
+  //   CategoriesComponent,
+  // ]
 })
 export class BrowseModule { }

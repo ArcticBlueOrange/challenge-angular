@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, asNativeElements } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, asNativeElements } from '@angular/core';
 import { TvShow } from 'src/app/models/tvshows';
-import { Observable, fromEvent, takeUntil } from 'rxjs';
+import { fromEvent, switchMap } from 'rxjs';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-show-card',
@@ -12,19 +14,21 @@ export class ShowCardComponent implements OnInit, AfterViewInit {
   @Input() show?: TvShow;
   @Input() customId?: string;
   @ViewChild("showCard") element?: ElementRef;
+  @Output() newId = new EventEmitter<string>();
   hovered: boolean = false;
 
   hovering(): void {
-    // console.log(`hovering ${this.show?.name}`);
     this.hovered = true;
   }
 
   leaving(): void {
-    // console.log(`leaving ${this.show?.name}`);
     this.hovered = false;
   }
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) { }
   ngOnInit(): void { }
   ngAfterViewInit(): void {
     if (this.element) {
@@ -32,6 +36,15 @@ export class ShowCardComponent implements OnInit, AfterViewInit {
         .subscribe((e) => this.hovering());
       fromEvent(this.element.nativeElement, "mouseleave")
         .subscribe((e) => this.leaving());
+    }
+  }
+
+  itemClicked() {
+    if (this.show) {
+      console.log(typeof this.router.url)
+      const _id = this.show.id;
+      this.newId.emit(`${_id}`)
+      this.router.navigate([`/detail/`, _id],)
     }
   }
 

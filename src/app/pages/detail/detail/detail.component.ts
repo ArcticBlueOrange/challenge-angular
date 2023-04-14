@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TvShow } from '../../../models/tvshows';
-import { HttpClient } from '@angular/common/http';
 import { UserDataService } from '../../../services/user-data.service';
 import { ShowApiService } from '../../../services/show-api.service';
 import { Title } from '@angular/platform-browser';
@@ -19,19 +18,13 @@ export class DetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private showApi: ShowApiService,
     public user: UserDataService,
-    private title: Title) {
-  }
+    private router: Router,
+    private title: Title) { }
 
   ngOnInit() {
     console.log(this.activatedRoute);
     const productId: string = this.activatedRoute.snapshot.params['id'];
-    console.log(productId);
-    this.showApi.getShowById(productId)
-      .subscribe(res => {
-        this.show = res;
-        this.title.setTitle(this.show.name)
-        this.similarShows = this.loadSimilarShows(res)
-      });
+    this.reloadData(productId);
   }
 
 
@@ -45,5 +38,21 @@ export class DetailComponent implements OnInit {
       });
     }
     return similar;
+  }
+
+  reloadData(productId: string) {
+    console.log("Reloading page")
+    this.showApi.getShowById(productId)
+      .subscribe(
+        res => {
+          this.show = res;
+          this.title.setTitle(this.show.name)
+          this.similarShows = this.loadSimilarShows(res)
+        },
+        err => {
+          this.router.navigate(['/detail'])
+        }
+      );
+
   }
 }
