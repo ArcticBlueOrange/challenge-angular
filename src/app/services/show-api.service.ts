@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TvShow, Response } from '../models/tvshows';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, map, observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +20,26 @@ export class ShowApiService {
     return this._http.get<TvShow>(`https://api.tvmaze.com/shows/${id}`)
   }
 
-  public getShowsByKey(searchKey: string = this.lastSearch) {
-    let res = this._http.get<Response[]>(`https://api.tvmaze.com/search/shows?q=${searchKey}`)
-    this.lastSearch = searchKey;
-    localStorage.setItem('last-search', searchKey);
+  // public getShowsByKey(searchKey: string = this.lastSearch): Observable<Response[]> {
+  //   let res = this._http.get<Response[]>(`https://api.tvmaze.com/search/shows?q=${searchKey}`)
+  //   this.lastSearch = searchKey;
+  //   localStorage.setItem('last-search', searchKey);
 
-    return res;
+  //   return res;
+  // }
+
+  public getShowsByKey(
+    searchKey: string = this.lastSearch,
+    cacheSearch = true,
+  ): Observable<TvShow[]> {
+    const res: Observable<TvShow[]> = this
+      ._http.get<Response[]>(`https://api.tvmaze.com/search/shows?q=${searchKey}`)
+      .pipe(map(responses => responses.map(resp => resp.show)));
+    if (cacheSearch) {
+      this.lastSearch = searchKey;
+      localStorage.setItem('last-search', searchKey);
+    }
+    return res
   }
 
   public cacheValues(newShows: TvShow[]) {

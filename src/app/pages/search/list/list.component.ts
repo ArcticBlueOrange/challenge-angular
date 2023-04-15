@@ -27,17 +27,17 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.shows.getShowsByKey().subscribe((res) => {
-      this.data = res.map(r => r.show);
+      this.data = res;
     })
 
     this.subject
       .pipe(
-        debounceTime(400),
+        debounceTime(450),
         tap((sk) => this.title.setTitle(`...${sk}...`))
       ).subscribe((text: string) =>
         this.shows.getShowsByKey(text).subscribe(
           (res) => {
-            const r = res.map(r => r.show)
+            const r = res
             this.data = r
             this.shows.cacheValues(r);
           })

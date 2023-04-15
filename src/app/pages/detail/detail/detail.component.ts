@@ -28,16 +28,22 @@ export class DetailComponent implements OnInit {
   }
 
 
-  loadSimilarShows(show: TvShow | null): TvShow[] {
-    let similar: TvShow[] = [];
-    if (show && show.genres.length > 0) {
+  loadSimilarShows(show: TvShow): void {
+    if (show.genres.length > 0) {
       this.showApi.getCached().subscribe((res) => {
-        similar = res.filter((s) => {
+        this.similarShows = res.filter((s) => {
           return show.genres.every(g => s.genres.includes(g) && s.id != show.id)
         });
       });
     }
-    return similar;
+    if (true && this.similarShows.length <= 5) {
+      this.showApi.getShowsByKey(show.name, false).subscribe((simNames) => {
+        this.similarShows = [...this.similarShows, ...simNames].filter((s, i, a) => {
+          return s.id != show.id && a.indexOf(s) == i
+        }
+        )
+      })
+    }
   }
 
   reloadData(productId: string) {
@@ -46,8 +52,8 @@ export class DetailComponent implements OnInit {
       .subscribe(
         res => {
           this.show = res;
-          this.title.setTitle(this.show.name)
-          this.similarShows = this.loadSimilarShows(res)
+          this.title.setTitle(this.show.name);
+          this.loadSimilarShows(res);
         },
         err => {
           this.router.navigate(['/detail'])

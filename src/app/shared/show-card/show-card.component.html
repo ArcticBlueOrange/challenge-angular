@@ -5,16 +5,18 @@
   [id]="customId ? customId + '-' + show?.id : show?.id"
   (click)="itemClicked()"
   >
-  <p class="show-header">
+  <div *ngIf="hovered" class="show-header">
     {{ show?.name }}
-  </p>
-  <img
-    *ngIf="show?.image"
-    src={{show?.image?.medium}} />
-  <div
-    *ngIf="!show?.image"
-    class="blank-image">IMG NOT FOUND</div>
-  <div *ngIf="true"
+  </div>
+  <div class="img-container">
+    <img
+      *ngIf="show?.image"
+      src={{show?.image?.medium}} />
+    <div
+      *ngIf="!show?.image"
+      class="blank-image"></div>
+  </div>
+  <div *ngIf="hovered"
     class="show-desc">
     {{show?.summary | detag | ellipsis: 35}}
   </div>

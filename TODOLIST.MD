@@ -53,7 +53,9 @@
 - 24-04-15 (#5)
 
 29. moved shows-list to own shared component to reduce duplication
-30.
+30. improved layout of card via borders, position-absolute elements
+31. added more suggestions to detail page (based on search name)
+32.
 
 # NOTES
 
