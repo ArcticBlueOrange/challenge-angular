@@ -9,10 +9,6 @@
   >
 </div>
 
-<div
-  class="container">
-  <app-show-card
-    *ngFor="let show of data"
-    [show]="show"></app-show-card>
-</div>
-
+<app-show-list
+  [shows]="data"
+></app-show-list>

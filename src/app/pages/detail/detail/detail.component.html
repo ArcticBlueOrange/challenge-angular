@@ -43,14 +43,12 @@
       SIMILAR SHOWS
     </h4>
 
-  <div
-    class="show-list">
-    <app-show-card
-      *ngFor="let suggestion of similarShows"
-      (newId)="reloadData($event)"
-      [show]="suggestion"></app-show-card>
-    <div *ngIf="similarShows.length == 0">No Similar Shows Found</div>
-  </div>
+    <app-show-list
+      [shows]="similarShows"
+      [noMessage]="'No Similar Shows Found'"
+      (showSelected)="reloadData($event)"
+      >
+    </app-show-list>
 
   </div>
 </div>

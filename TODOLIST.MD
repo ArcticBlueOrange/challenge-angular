@@ -8,7 +8,7 @@
 
 # DONE
 
-- 23-04-11
+- 23-04-11 (#1)
 
 1.  Moved tvshow and response to app/models dir (for readability)
 2.  Checked api endpoints for tvmaze
@@ -16,10 +16,10 @@
     - Summary
     - Image.original
 4.  Added Detail Component
-5.  Edited html to add <base href="/"> (didn't know this)
+5.  Edited html to add <base href="/">
 6.  Added search funct. to the list page
 
-- 23-04-12
+- 23-04-12 (#2)
 
 7.  Added profile component w/ form
 8.  Moved form logic to userData service (user data is stored in localStorage)
@@ -32,7 +32,7 @@
 15. categories-component
 16. forms for filtering cats
 
-- 23-04-13
+- 23-04-13 (#3)
 
 17. any-all filter in cats
 18. animations for the showcard (netflix-style)
@@ -40,15 +40,20 @@
 20. moved show-api interact to own service
 21. more-button (responding to visibility)
 
-- 23-04-14
+- 23-04-14 (#4)
 
 22. fontawesome icons / bootstrap classes
 23. save last search to service (to keep when changing page) / local storage (when reloading app)
-24. moved detail to own module (TODO BUG: NOT RELOADING WHEN CLICKING ANY FROM SUGGESTIONS)
+24. moved detail to own module ~~(TODO BUG: NOT RELOADING WHEN CLICKING ANY FROM SUGGESTIONS)~~
 25. ...moved browse to own module
 26. ...moved search to own module
 27. ...moved profile to own module
-28.
+28. fixed above bug
+
+- 24-04-15 (#5)
+
+29. moved shows-list to own shared component to reduce duplication
+30.
 
 # NOTES
 

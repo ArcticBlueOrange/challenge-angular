@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, asNativeElements } from '@angular/core';
 import { TvShow } from 'src/app/models/tvshows';
-import { fromEvent, switchMap } from 'rxjs';
+import { debounce, delay, fromEvent, switchMap, takeUntil } from 'rxjs';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NavigationExtras } from '@angular/router';
 
@@ -33,6 +33,7 @@ export class ShowCardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.element) {
       fromEvent(this.element.nativeElement, "mouseenter")
+        // .pipe(delay(500), takeUntil())
         .subscribe((e) => this.hovering());
       fromEvent(this.element.nativeElement, "mouseleave")
         .subscribe((e) => this.leaving());

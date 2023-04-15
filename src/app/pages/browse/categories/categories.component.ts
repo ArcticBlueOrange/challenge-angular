@@ -10,7 +10,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.sass']
 })
-export class CategoriesComponent implements OnInit, AfterViewInit {
+export class CategoriesComponent implements OnInit {
 
   shows: TvShow[] = [];
   genres: string[] = [];
@@ -18,41 +18,11 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   checkAll: boolean = true;
   maxShown: number = 20;
   increment: number = 10;
-  @ViewChild("showMoreButton") showMoreButton?: ElementRef;
 
   constructor(
     private user: UserDataService,
     public showsApi: ShowApiService,
     private title: Title) { }
-
-  ngAfterViewInit(): void {
-    if (this.showMoreButton) {
-      // console.log("More button found")
-      // NOT 100% sure how it works
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // element is in view
-            const event = new Event('elementInView');
-            entry.target.dispatchEvent(event);
-          }
-        });
-      });
-      observer.observe(this.showMoreButton.nativeElement);
-
-      fromEvent(this.showMoreButton.nativeElement, "elementInView")
-        .pipe(
-          delay(500),
-          tap(() => { if (this.showMoreButton) this.showMoreButton.nativeElement.innerHTML = '...' }),
-          delay(1000),
-          tap(() => { if (this.showMoreButton) this.showMoreButton.nativeElement.innerHTML = 'SHOW MORE' }),
-        ).subscribe(() => {
-          // console.log("More visibility triggered")
-          this.showMore()
-        }
-        );
-    }
-  }
 
   ngOnInit(): void {
     // get cached shows

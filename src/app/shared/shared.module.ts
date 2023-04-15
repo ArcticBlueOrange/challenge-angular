@@ -8,6 +8,7 @@ import { MenubarComponent } from './menubar/menubar.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ShowListComponent } from './show-list/show-list.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MenubarComponent,
     ToggleComponent,
     NotFoundComponent,
+    ShowListComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ToggleComponent,
     DetagPipe,
     NotFoundComponent,
+    ShowListComponent,
   ]
 })
 export class SharedModule { }

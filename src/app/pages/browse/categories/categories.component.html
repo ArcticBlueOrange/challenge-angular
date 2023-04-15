@@ -24,20 +24,8 @@
   </div>
 
 
-<!-- LIST OF FILTERED MOVIES -->
-<div
-  class="show-list">
-  <app-show-card
-    *ngFor="let show of filterShows(checkAll).slice(0,maxShown)"
-    [show]="show"></app-show-card>
-  <div *ngIf="filterShows(checkAll).length == 0">No Shows Found :(</div>
-</div>
+<app-show-list
+  [shows]="filterShows(checkAll)"
+></app-show-list>
 
 
-<!-- INCREMENT BUTTON -->
-<button
-  #showMoreButton
-  class="btn btn-outline-primary more-button"
-  *ngIf="filterShows(checkAll).length > maxShown"
-  (click)="showMore()"
-  >SHOW MORE</button>
