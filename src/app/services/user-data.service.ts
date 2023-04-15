@@ -6,7 +6,7 @@ import { UserProfile } from '../models/profile';
 })
 export class UserDataService {
 
-  userProfile: UserProfile = { mail: '', theme: 'light' }
+  userProfile: UserProfile = { mail: '', theme: 'light', username: '' }
 
   constructor() {
     const ud = localStorage.getItem('userdata');
@@ -30,7 +30,11 @@ export class UserDataService {
     return t || '';
   }
 
-  // TODO enhance security / restrict newData values
+  get username(): string {
+    const u = this.userProfile.username;
+    return u || '';
+  }
+
   update(newData: any) {
     this.userProfile = newData;
     localStorage.setItem('userdata', JSON.stringify(newData));

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormsModule, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserProfile } from '../../../models/profile';
 import { UserDataService } from '../../../services/user-data.service';
 import { Title } from '@angular/platform-browser';
@@ -12,11 +12,18 @@ import { Title } from '@angular/platform-browser';
 export class ProfileComponent {
 
   userForm = this.fb.group({
-    mail: [this.user.mail],
+    mail: [
+      this.user.mail,
+      [Validators.required, Validators.email, Validators.minLength(4)]
+    ],
+    username: [
+      this.user.username,
+      [Validators.required, Validators.minLength(4)]
+    ],
     theme: [this.user.theme],
   })
 
-  userProfile: UserProfile = { mail: '', theme: 'light' }
+  userProfile: UserProfile = { mail: '', theme: 'light', username: '' }
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +35,8 @@ export class ProfileComponent {
 
   onSubmit() {
     this.user.update(this.userForm.value);
+    console.log(this.userForm.valid)
+    console.log(this.userForm.errors)
   }
 
 }

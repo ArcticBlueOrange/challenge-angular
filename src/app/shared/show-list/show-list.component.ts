@@ -1,5 +1,5 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { delay, fromEvent, tap } from 'rxjs';
+import { concatMap, debounce, delay, from, fromEvent, interval, map, of, take, tap } from 'rxjs';
 import { TvShow } from 'src/app/models/tvshows';
 
 @Component({
@@ -14,6 +14,7 @@ export class ShowListComponent implements OnInit, AfterViewInit {
   @Input() noMessage: string = "No shows found :("
   @ViewChild("showMoreButton") showMoreButton?: ElementRef;
   @Output() showSelected = new EventEmitter<string>();
+  // displayShows: TvShow[] = [];
   shown: number;
 
   constructor() {
@@ -49,6 +50,19 @@ export class ShowListComponent implements OnInit, AfterViewInit {
         }
         );
     }
+    // TODO - NICE IDEA BUT BREAKS TOO MANY THINGS
+    // from(this.shows).pipe(
+    //   concatMap(item => interval(50).pipe(
+    //     take(1),
+    //     map(() => item)
+    //   ))
+    // ).subscribe(
+    //   res => {
+    //     // console.log(res)
+    //     // console.log(this.displayShows)
+    //     this.displayShows = [...this.displayShows, res]
+    //   }
+    // )
   }
 
   showMore() {

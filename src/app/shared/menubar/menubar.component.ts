@@ -8,7 +8,7 @@ import { UserDataService } from 'src/app/services/user-data.service';
 })
 export class MenubarComponent implements OnInit {
 
-  constructor(private user: UserDataService) { }
+  constructor(public user: UserDataService) { }
 
   ngOnInit(): void {
   }

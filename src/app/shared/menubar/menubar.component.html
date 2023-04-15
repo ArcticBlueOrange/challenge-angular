@@ -1,11 +1,14 @@
 <div class="topnav">
-  <a class="btn navitem">
+  <div>
+  <a class="btn navitem"
+    routerLink="/shows">
     <i class="fa fa-film logo" aria-hidden="true"> NeetFlux</i>
   </a>
   <a routerLink="/shows" routerLinkActive="active"
     class="btn navitem btn btn-outline">Search</a>
   <a routerLink="/browse" routerLinkActive="active"
     class="btn navitem btn btn-outline">Browse</a>
+  </div>
   <a routerLink="/profile" routerLinkActive="active"
-    class="btn navitem btn btn-outline">Profile</a>
+    class="btn navitem btn btn-outline user-name">Profile <span *ngIf="user.username">({{user.username}})</span></a>
 </div>

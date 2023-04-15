@@ -36,12 +36,16 @@ export class DetailComponent implements OnInit {
         });
       });
     }
-    if (true && this.similarShows.length <= 5) {
+    // TODO MORE BUGS
+    if (false && this.similarShows.length <= 15) {
       this.showApi.getShowsByKey(show.name, false).subscribe((simNames) => {
         this.similarShows = [...this.similarShows, ...simNames].filter((s, i, a) => {
-          return s.id != show.id && a.indexOf(s) == i
-        }
-        )
+          console.log("****")
+          console.log(show)
+          console.log(s)
+          console.log(`${i} ${a.indexOf(s)}`)
+          return a.indexOf(s) == i && s.id != show.id
+        })
       })
     }
   }
