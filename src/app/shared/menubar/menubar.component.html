@@ -1,0 +1,20 @@
+<div
+  #navBar
+  class="topnav theme-dashboard theme-primary scrolled">
+  <div>
+  <a class="btn navitem theme-accent"
+    routerLink="/shows">
+    <i class="fa fa-film logo" aria-hidden="true"> NeetFlux</i>
+  </a>
+  <a routerLink="/shows" routerLinkActive="active"
+    class="btn navitem btn btn-outline theme-secondary">
+    Search</a>
+  <a routerLink="/browse" routerLinkActive="active"
+    class="btn navitem btn btn-outline theme-secondary">
+    Browse</a>
+  </div>
+  <a routerLink="/profile" routerLinkActive="active"
+    class="btn navitem btn btn-outline user-name theme-secondary">
+    Profile
+    <span *ngIf="user.username">({{user.username}})</span></a>
+</div>

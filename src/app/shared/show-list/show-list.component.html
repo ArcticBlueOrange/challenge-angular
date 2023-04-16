@@ -1,0 +1,19 @@
+<!-- LIST OF FILTERED MOVIES -->
+<div
+  class="show-list">
+  <app-show-card
+    *ngFor="let show of shows.slice(0,shown)"
+    [show]="show"
+    (newId)="showSelected.emit($event)"
+    >
+  </app-show-card>
+  <div *ngIf="shows.length == 0">{{noMessage}}</div>
+</div>
+
+<!-- INCREMENT BUTTON -->
+<button
+  #showMoreButton
+  class="btn btn-outline-primary more-button"
+  *ngIf="shows.length > shown"
+  (click)="showMore()"
+  >SHOW MORE</button>

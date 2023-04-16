@@ -1,0 +1,20 @@
+@import './styles-theme'
+
+.categories-list
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+
+  .toggle-button
+    margin: 1%
+    border-radius: 10%
+
+    input + .desc
+      transition: linear .2s
+
+    input:checked + .desc
+      background-color: $secondary-color
+
+    input
+      display: none
+      position: absolute

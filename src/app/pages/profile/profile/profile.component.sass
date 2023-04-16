@@ -1,0 +1,26 @@
+@import 'styles.sass'
+
+h2, h5
+  margin-bottom: 3%
+  text-align: center
+
+.grid-container
+  display: grid
+  grid-template-columns: 200px 1fr
+  grid-gap: 16px
+  width: 50%
+  margin: auto
+  margin-bottom: .5em
+
+  label
+    grid-column: 1/2
+
+  select,input
+    grid-column: 2/3
+
+  .submit
+    grid-column: 1/3
+
+  .form-error
+    outline: 1px solid red
+    grid-column: 1/3

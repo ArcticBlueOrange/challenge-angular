@@ -1,0 +1,31 @@
+<h2> Browse by Categories </h2>
+
+<app-toggle
+  [(checkedVar)]="checkAll"
+  [textOn]="'ALL'"
+  [textOff]="'ANY'"></app-toggle>
+
+<!-- form WITH THE GENRES -->
+  <div
+    class="categories-list">
+    <div
+      class="toggle-button"
+      *ngFor="let genre of genres; let i = index">
+      <label>
+        <input
+          (change) = "getUserSelect($event,i)"
+          type="checkbox" value="category">
+        <div
+          class="btn btn-primary desc">
+          {{genre}}
+        </div>
+      </label>
+    </div>
+  </div>
+
+
+<app-show-list
+  [shows]="filterShows(checkAll)"
+></app-show-list>
+
+

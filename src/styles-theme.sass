@@ -1,0 +1,45 @@
+// Global variables
+$primary-color: #007bff
+$secondary-color: #6c757d
+$warning-color: #c94c4c
+$error-img: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 20%, rgba(0,0,0,1) 40%, rgba(255,255,255,1) 60%, rgba(0,0,0,1) 80%, rgba(255,255,255,1) 100%)
+
+// Dark theme vars
+$dark-background: #343a40
+$dark-text-color: #f8f9fa
+$primary-color-dark: #006bff
+$secondary-color-dark: #6c757d
+
+// Light theme vars
+$light-background: #f8f9fa
+$light-text-color: #343a40
+$primary-color-light: #007bff
+$secondary-color-light: #6c757d
+// Mixin to set theme styles
+@mixin theme($background-color, $text-color)
+  background-color: $background-color
+  color: $text-color !important
+
+@mixin theme-text($text-color)
+
+.theme
+  body.light-theme &
+    @include theme($light-background, $light-text-color)
+  body.dark-theme &
+    @include theme($dark-background, $dark-text-color)
+
+.theme-dashboard
+  // box-shadow: 10px 0 10px $warning-color
+  body.light-theme &
+    @include theme($dark-background, $dark-text-color)
+  body.dark-theme &
+    @include theme($secondary-color-dark, $light-text-color)
+
+.theme-accent
+  color: $warning-color
+
+.theme-secondary
+  body.light-theme &
+    @include theme($dark-background, $dark-text-color)
+  body.dark-theme &
+    @include theme($secondary-color-dark, $light-text-color)

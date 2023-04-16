@@ -1,0 +1,69 @@
+<h2>
+  Modifica il profilo
+</h2>
+
+<h5>
+  {{user.mail || 'User'}}
+</h5>
+
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  class="theme"
+  >
+
+  <div class="grid-container">
+    <label
+      class="form-label"
+      for="email">E-Mail</label>
+    <input
+      type="email"
+      formControlName="mail"
+      placeholder="E-Mail"
+      class="form-control form-control-lg"
+      >
+    <div class="form-error" *ngIf="!userForm.value?.mail"> Please insert an email </div>
+    <div class="form-error" *ngIf="userForm.value?.mail && userForm.controls['mail'].invalid"> Please insert a valid email </div>
+  </div>
+
+  <div class="grid-container">
+    <label
+      class="form-label"
+      for="username">Username</label>
+    <input
+      type="text"
+      formControlName="username"
+      placeholder="Username"
+      class="form-control"
+      >
+    <div class="form-error" *ngIf="!userForm.value?.username"> Please insert a Username </div>
+  </div>
+
+  <div class="grid-container">
+    <label
+      for="theme"
+      class="form-label">Theme</label>
+    <select
+      class="form-select"
+      formControlName="theme"
+      name="Theme"
+      >
+      <option
+        value="light"
+        >Light</option>
+      <option
+        value="dark"
+        >Dark</option>
+    </select>
+  </div>
+
+  <div class="grid-container">
+    <input
+      type="submit"
+      class="submit btn btn-primary"
+      value="Save Settings"
+      [disabled]="userForm.invalid"
+      >
+  </div>
+
+</form>
