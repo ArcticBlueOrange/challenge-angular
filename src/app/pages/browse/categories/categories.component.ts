@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TvShow } from '../../../models/tvshows';
 import { UserDataService } from '../../../services/user-data.service';
 import { ShowApiService } from '../../../services/show-api.service';
-import { delay, fromEvent, map, of, repeat, tap, timeInterval } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 @Component({

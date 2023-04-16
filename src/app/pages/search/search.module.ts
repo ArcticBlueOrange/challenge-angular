@@ -17,8 +17,5 @@ import { ListComponent } from './list/list.component';
     SharedModule,
     FormsModule,
   ],
-  // exports: [
-  //   ListComponent,
-  // ]
 })
 export class SearchModule { }

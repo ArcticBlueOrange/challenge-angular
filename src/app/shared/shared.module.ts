@@ -1,4 +1,4 @@
-import { Input, NgModule, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShowCardComponent } from './show-card/show-card.component';
 import { RouterModule } from '@angular/router';

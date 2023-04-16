@@ -36,7 +36,7 @@ export class DetailComponent implements OnInit {
         });
       });
     }
-    // TODO MORE BUGS
+    // NOT IMPOLEMENT FOR NOW
     if (false && this.similarShows.length <= 15) {
       this.showApi.getShowsByKey(show.name, false).subscribe((simNames) => {
         this.similarShows = [...this.similarShows, ...simNames].filter((s, i, a) => {

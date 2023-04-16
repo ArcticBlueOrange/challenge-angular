@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TvShow, Response } from '../models/tvshows';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +62,6 @@ export class ShowApiService {
 
   public getCached(): Observable<TvShow[]> {
     if (!this.fresh) {
-      // console.log("refreshing")
       const cache = localStorage.getItem('shows-cache');
       if (cache) {
         this.lcShows = JSON.parse(cache);

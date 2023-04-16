@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, asNativeElements } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { TvShow } from 'src/app/models/tvshows';
-import { debounce, delay, fromEvent, skipWhile, switchMap, takeUntil, takeWhile, timer } from 'rxjs';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { NavigationExtras } from '@angular/router';
+import {  fromEvent, switchMap, takeUntil, timer } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-card',
@@ -27,7 +26,6 @@ export class ShowCardComponent implements OnInit, AfterViewInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
   ) { }
   ngOnInit(): void { }
   ngAfterViewInit(): void {

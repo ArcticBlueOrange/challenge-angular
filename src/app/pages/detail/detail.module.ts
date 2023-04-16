@@ -15,8 +15,5 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     DetailRoutingModule
   ],
-  // exports: [
-  //   DetailComponent,
-  // ]
 })
 export class DetailModule { }

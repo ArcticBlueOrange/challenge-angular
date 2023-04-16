@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { TvShow, Response } from '../../../models/tvshows';
-import { Subject, of } from 'rxjs'
-import { delay, debounceTime, tap } from 'rxjs/operators'
+import { TvShow } from '../../../models/tvshows';
+import { Subject } from 'rxjs'
+import { debounceTime, tap } from 'rxjs/operators'
 import { UserDataService } from '../../../services/user-data.service';
 import { ShowApiService } from '../../../services/show-api.service';
 import { Title } from '@angular/platform-browser';

@@ -31,8 +31,6 @@ export interface ShowEpisode {
   number: 5,
   type: string,
   airdate: string,
-  // airtime: "",
-  // airstamp: "2018-08-01T12:00:00+00:00",
   // runtime: 20,
   // rating: { "average": null },
   image: string,

@@ -17,8 +17,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     ReactiveFormsModule,
   ],
-  // exports: [
-  //   ProfileComponent,
-  // ]
+
 })
 export class ProfileModule { }

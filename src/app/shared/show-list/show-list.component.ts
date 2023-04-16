@@ -1,5 +1,5 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { concatMap, debounce, delay, from, fromEvent, interval, map, of, take, tap } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { delay, fromEvent, tap } from 'rxjs';
 import { TvShow } from 'src/app/models/tvshows';
 
 @Component({
@@ -26,7 +26,6 @@ export class ShowListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.showMoreButton) {
       // console.log("More button found")
-      // NOT 100% sure how it works
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
