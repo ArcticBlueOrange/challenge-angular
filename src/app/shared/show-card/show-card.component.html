@@ -5,7 +5,10 @@
   [id]="customId ? customId + '-' + show?.id : show?.id"
   (click)="itemClicked()"
   >
-  <div *ngIf="hovered" class="show-header">
+  <div
+    *ngIf="hovered"
+    class="show-header unselectable"
+    >
     {{ show?.name }}
   </div>
   <div class="img-container">
@@ -17,7 +20,7 @@
       class="blank-image"></div>
   </div>
   <div *ngIf="hovered"
-    class="show-desc">
+    class="show-desc unselectable">
     {{show?.summary | detag | ellipsis: 35}}
   </div>
 </div>

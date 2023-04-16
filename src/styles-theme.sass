@@ -1,0 +1,52 @@
+// Global variables
+$primary-color: #007bff
+$secondary-color: #6c757d
+$warning-color: #c94c4c
+
+// Dark theme vars
+$dark-background: #343a40
+$dark-text-color: #f8f9fa
+$primary-color-dark: #006bff
+$secondary-color-dark: #6c757d
+// $hex: #cfe0e8
+// $hex: #b7d7e8
+// $hex: #87bdd8
+// $hex: #daebe8
+
+// Light theme vars
+$light-background: #f8f9fa
+$light-text-color: #343a40
+$primary-color-light: #007bff
+$secondary-color-light: #6c757d
+// $hex: #bccad6
+// $hex: #8d9db6
+// $hex: #667292
+// $hex: #f1e3dd
+// Mixin to set theme styles
+@mixin theme($background-color, $text-color)
+  background-color: $background-color
+  color: $text-color !important
+
+@mixin theme-text($text-color)
+
+.theme
+  body.light-theme &
+    @include theme($light-background, $light-text-color)
+  body.dark-theme &
+    @include theme($dark-background, $dark-text-color)
+
+.theme-dashboard
+  // box-shadow: 10px 0 10px $warning-color
+  body.light-theme &
+    @include theme($dark-background, $dark-text-color)
+  body.dark-theme &
+    @include theme($secondary-color-dark, $light-text-color)
+
+.theme-accent
+  color: $warning-color
+
+.theme-secondary
+  body.light-theme &
+    @include theme($dark-background, $dark-text-color)
+  body.dark-theme &
+    @include theme($secondary-color-dark, $light-text-color)

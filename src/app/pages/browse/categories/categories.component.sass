@@ -1,3 +1,5 @@
+@import './styles-theme'
+
 .categories-list
   display: flex
   flex-direction: row
@@ -5,12 +7,14 @@
 
   .toggle-button
     margin: 1%
+    // background-color: $primary-color
+    border-radius: 10%
 
     input + .desc
       transition: linear .2s
 
     input:checked + .desc
-      background-color: #1cbaa2
+      background-color: $secondary-color
 
     input
       display: none

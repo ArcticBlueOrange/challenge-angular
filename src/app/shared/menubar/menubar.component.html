@@ -1,14 +1,18 @@
-<div class="topnav">
+<div class="topnav theme-dashboard theme-primary">
   <div>
-  <a class="btn navitem"
+  <a class="btn navitem theme-accent"
     routerLink="/shows">
     <i class="fa fa-film logo" aria-hidden="true"> NeetFlux</i>
   </a>
   <a routerLink="/shows" routerLinkActive="active"
-    class="btn navitem btn btn-outline">Search</a>
+    class="btn navitem btn btn-outline theme-secondary">
+    Search</a>
   <a routerLink="/browse" routerLinkActive="active"
-    class="btn navitem btn btn-outline">Browse</a>
+    class="btn navitem btn btn-outline theme-secondary">
+    Browse</a>
   </div>
   <a routerLink="/profile" routerLinkActive="active"
-    class="btn navitem btn btn-outline user-name">Profile <span *ngIf="user.username">({{user.username}})</span></a>
+    class="btn navitem btn btn-outline user-name theme-secondary">
+    Profile
+    <span *ngIf="user.username">({{user.username}})</span></a>
 </div>
