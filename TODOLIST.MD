@@ -61,7 +61,7 @@
 
 33. Added theme mixins for dashboard
 34. added more details to the detail page
-35. shrinking scroll page
+35. shrinking nav bar
 
 # NOTES
 

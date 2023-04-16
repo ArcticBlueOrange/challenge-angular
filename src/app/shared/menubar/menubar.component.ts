@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { UserDataService } from 'src/app/services/user-data.service';
 })
 export class MenubarComponent implements OnInit {
 
-  constructor(public user: UserDataService) { }
+  @ViewChild("navBar", { static: true }) navBar!: ElementRef<HTMLElement>;
 
-  ngOnInit(): void {
-  }
+  constructor(public user: UserDataService) { }
+  ngOnInit(): void { }
 
 }
