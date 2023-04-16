@@ -11,8 +11,9 @@
   <div class="show-img-desc">
     <img
       *ngIf="show.image"
-      [src]="show.image.medium"
-      class="show-img">
+      [src]="show.image.original || show.image.medium"
+      class="show-img"
+      >
 
     <div
       class="show-desc">
@@ -20,23 +21,36 @@
       <ng-component
       [innerHTML]="show.summary"></ng-component>
 
-      <p> Genres </p>
       <div
-        class="show-genres" >
-        <div *ngFor="let genre of show.genres"
-          class="show-genre" >
-          {{genre}}
+        class="show-details"
+        >
+        <h5> More Info </h5>
+
+        <p *ngIf="show.language">Language: {{show.language}}</p>
+
+        <p *ngIf="show.rating?.average">
+          Average Rating: <strong>{{show.rating?.average}}</strong>
+        </p>
+        <p *ngIf="!show.rating?.average">No Rating available</p>
+
+        <p *ngIf="show.officialSite">Available on streaming <a [href]="show.officialSite">Here</a></p>
+
+        <h5> Genres </h5>
+        <div
+          class="show-genres" >
+          <div *ngFor="let genre of show.genres"
+            class="show-genre" >
+            {{genre}}
+          </div>
         </div>
       </div>
 
-      <div *ngIf="show.rating?.average">
-        Average Rating:
-          <strong>{{show.rating?.average}}</strong>
-      </div>
-      <div *ngIf="!show.rating?.average">No Rating available</div>
-
     </div>
   </div>
+
+  <!-- <div class="episodes">
+
+  </div> -->
 
   <div class="suggested">
     <h4>

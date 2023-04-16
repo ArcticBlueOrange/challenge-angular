@@ -57,6 +57,12 @@
 31. added more suggestions to detail page (based on search name)
 32. profile: added username, added validators
 
+- 24-04-16 (#6)
+
+33. Added theme mixins for dashboard
+34. added more details to the detail page
+35. shrinking scroll page
+
 # NOTES
 
 Used API Endpoints:

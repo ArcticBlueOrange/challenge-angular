@@ -1,3 +1,5 @@
+@import './styles-theme'
+
 .show-card
   padding-top: 1em
 
@@ -12,9 +14,10 @@
   width: 80%
 
 .show-img
-  width: 20%
+  max-width: 400px
   height: 20%
   margin: auto
+  background-color: $error-img
 
 .show-desc
   width: 50%
@@ -31,8 +34,12 @@
 
 .suggested
   margin: auto
+  margin-top: 90px
 
-  .show-list
-    display: flex
-    flex-wrap: wrap
-  // outline: 1px solid green
+.show-details
+  // outline: 1px solid red
+  h5
+    margin: auto
+    text-align: center
+
+// .episodes
