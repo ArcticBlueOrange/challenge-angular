@@ -1,12 +1,11 @@
 <h2> Browse by Categories </h2>
 
-<app-toggle
+<!-- form WITH THE GENRES -->
+<!-- <app-toggle
   [(checkedVar)]="checkAll"
   [textOn]="'ALL'"
-  [textOff]="'ANY'"></app-toggle>
-
-<!-- form WITH THE GENRES -->
-  <div
+  [textOff]="'ANY'"></app-toggle> -->
+  <!-- <div
     class="categories-list">
     <div
       class="toggle-button"
@@ -21,11 +20,24 @@
         </div>
       </label>
     </div>
-  </div>
+  </div> -->
+<!-- <app-show-list
+  [shows]="filterShows(checkAll)"
+></app-show-list> -->
 
+  <!-- VARIANT WITH ITS OWN COMPONENT -->
+  <app-genre-selector
+    [genres]="genres"
+    [selectedGenres]="selectedGenres"
+    (newSelection)="newSelection($event)"
+    (resetSelection)="resetSelection()"
+    ></app-genre-selector>
 
 <app-show-list
-  [shows]="filterShows(checkAll)"
+  [shows]="shows"
+  [maxShown]="maxShown"
+  [increment]="increment"
 ></app-show-list>
 
-
+<!-- <pre> {{genres | json}} </pre>
+<pre> {{selectedGenres | json}} </pre> -->

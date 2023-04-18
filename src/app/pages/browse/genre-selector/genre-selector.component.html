@@ -1,0 +1,18 @@
+<div class="categories-list">
+  <!-- RESET Button -->
+  <button
+    class="btn btn-primary desc reset-button toggle-button"
+    (click)="resetSelection.emit()"
+    >
+    Reset
+  </button>
+  <!-- GENRES LIST -->
+  <button
+    *ngFor="let genre of genres; let i = index"
+    class="btn btn-primary desc toggle-button"
+    [ngClass]="{'disabled':selectedGenres.includes(genre)}"
+    (click)="newSelection.emit(genre)"
+    >
+    {{genre}}
+  </button>
+</div>
