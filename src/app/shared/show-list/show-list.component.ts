@@ -23,6 +23,7 @@ export class ShowListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void { }
+
   ngAfterViewInit(): void {
     if (this.showMoreButton) {
       // console.log("More button found")
